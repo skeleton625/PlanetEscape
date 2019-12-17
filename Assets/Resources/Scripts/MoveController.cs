@@ -5,35 +5,42 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     [SerializeField]
-    private float carSpeed;
-    private Rigidbody carRb;
+    private float MoveSpeed;
     [SerializeField]
-    private Vector3 Planet;
+    private float RotateSpeed;
 
-    // Start is called before the first frame update
+    private float rotation;
+    private Rigidbody rb;
+
     void Start()
     {
-        carRb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // 수정 중 . . .
-        // Move();
+
+        InputMove();
     }
 
-    private void Move()
+    private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        RotateAround(Planet, Vector3.right * horizontal * carSpeed, vertical);
+        ActiveMove();
     }
 
-    private void RotateAround(Vector3 origin, Vector3 axis, float angle)
+    private void InputMove()
     {
-        Quaternion q = Quaternion.AngleAxis(angle, axis);
-        carRb.MovePosition(q * (carRb.transform.position - origin) + origin);
-        carRb.MoveRotation(carRb.transform.rotation * q);
+        rotation = Input.GetAxisRaw("Horizontal");
+    }
+
+    private void ActiveMove()
+    {
+        // 플레이어 차의 위치 + 프레임 당 이동량
+        rb.MovePosition(rb.position + transform.forward * MoveSpeed * Time.fixedDeltaTime);
+        // 플레이어 좌 우 입력에 의한 좌 우 회전
+        Quaternion deltaRotate = Quaternion.Euler(Vector3.up * rotation * RotateSpeed * Time.fixedDeltaTime);
+        Quaternion targetRotate = rb.rotation * deltaRotate;
+        // 플레이어 차의 부드러운 회전 적용
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotate, 50f * Time.deltaTime));
     }
 }
