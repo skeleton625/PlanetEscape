@@ -445,10 +445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e52703a3b2ee6049b511dbb79406bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 857884521}
-  Smoothness: 1
-  RotationSmoothness: 0.1
-  offset: {x: 0, y: 10, z: 0}
 --- !u!1 &1110943589
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +549,7 @@ GameObject:
   - component: {fileID: 1480954435}
   - component: {fileID: 1480954434}
   - component: {fileID: 1480954438}
+  - component: {fileID: 1480954439}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -645,3 +642,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VirtualGravityForce: -5
+--- !u!114 &1480954439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480954433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4e77395b4e5284b91dec09dccebbe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShrinkForce: 0.01
+  MinShrink: 1
