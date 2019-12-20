@@ -15,7 +15,7 @@ public class VirtualGravityAttractor : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        col = GetComponent<SphereCollider>();
+        col = gameObject.GetComponent<SphereCollider>();
     }
 
     // body 오브젝트에 중력을 제공하는 함수
@@ -30,7 +30,6 @@ public class VirtualGravityAttractor : MonoBehaviour
     public void PlaceOnSurface(Rigidbody body)
     {
         body.MovePosition(CalculateGravityUp(body) * (transform.localScale.x * col.radius));
-
         RotateBody(body);
     }
 
