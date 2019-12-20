@@ -11,10 +11,11 @@ public class MoveController : MonoBehaviour
 
     private float rotation;
     private Rigidbody rb;
-
+    private Animator PlayerAnim;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        PlayerAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -31,6 +32,7 @@ public class MoveController : MonoBehaviour
     private void InputMove()
     {
         rotation = Input.GetAxisRaw("Horizontal");
+        PlayerAnim.SetFloat("Rotate", rotation);
     }
 
     private void ActiveMove()
