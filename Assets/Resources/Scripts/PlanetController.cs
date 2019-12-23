@@ -13,29 +13,29 @@ public class PlanetController : MonoBehaviour
     [SerializeField]
     private float MeteoRadius;
 
+    private bool planetShrink;
+    public bool PlanetShrink
+        { set { planetShrink = value; } }
+
     private Vector3 ShrinkVector;
     private WaitForSeconds ShrinkTimer = new WaitForSeconds(1f);
 
     private void Start()
     {
+        PlanetShrink = true;
         ShrinkVector = new Vector3(1, 1, 1) * ShrinkForce;
-        StartCoroutine(ShrinkPlanetCoroutine());
         StartCoroutine(StartMeteoCoroutine());
     }
 
     private void Update()
     {
-        if (transform.localScale.x < MinShrink)
-            StopAllCoroutines();
+        if (transform.localScale.x > MinShrink && planetShrink)
+            ShrinkingPlanet();
     }
 
-    private IEnumerator ShrinkPlanetCoroutine()
+    private void ShrinkingPlanet()
     {
-        while(transform.localScale.x > MinShrink)
-        {
-            transform.localScale -= ShrinkVector;
-            yield return null;
-        }       
+        transform.localScale -= ShrinkVector;
     }
 
     private IEnumerator StartMeteoCoroutine()
