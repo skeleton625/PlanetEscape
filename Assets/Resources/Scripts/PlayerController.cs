@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float MoveSpeed;
     [SerializeField]
     private float RotateSpeed;
+    [SerializeField]
+    private GameObject ExplosionEffect;
 
     private float rotation;
     private Rigidbody rb;
     private Animator PlayerAnim;
+    private Camera PlayerCamera;
+    private GameObject Planet;
+    private bool playerDead;
+    public bool PlayerDead
+        { get { return playerDead; } }
+
     void Start()
     {
+        playerDead = false;
+        Planet = GameObject.Find("Planet");
+        PlayerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        PlayerCamera.transform.parent = transform;
         rb = GetComponent<Rigidbody>();
         PlayerAnim = GetComponent<Animator>();
     }
@@ -44,5 +56,18 @@ public class MoveController : MonoBehaviour
         Quaternion targetRotate = rb.rotation * deltaRotate;
         // 플레이어 차의 부드러운 회전 적용
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotate, 50f * Time.deltaTime));
+    }
+
+    // 메테오 충돌 시 이벤트 함수
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag != "Explo")
+            return;
+        PlayerCamera.transform.parent = null;
+        // 충돌 효과 생성 후, 차 오브젝트 제거
+        GameObject _clone = Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
+        Destroy(_clone, 3f);
+        gameObject.SetActive(false);
+        playerDead = true;
     }
 }
