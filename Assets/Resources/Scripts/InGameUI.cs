@@ -11,6 +11,8 @@ public class InGameUI : MonoBehaviour
     private GameObject RadiusUI;
     [SerializeField]
     private Text RadiusValue;
+    [SerializeField]
+    private Text LastRadius;
 
     private GameObject Planet;
 
@@ -24,5 +26,12 @@ public class InGameUI : MonoBehaviour
     {
         RadiusValue.text = 
             string.Format("{0:F1}", Planet.transform.localScale.x) + " M";
+    }
+
+    public void ActivateGameOverUI()
+    {
+        RadiusUI.SetActive(false);
+        LastRadius.text = RadiusValue.text;
+        GameOverUI.SetActive(true);
     }
 }
