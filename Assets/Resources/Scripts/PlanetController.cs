@@ -12,40 +12,33 @@ public class PlanetController : MonoBehaviour
     private GameObject DefaultMeteo;
     [SerializeField]
     private float MeteoRadius;
-
-    private bool planetShrink;
-    public bool PlanetShrink
-        { set { planetShrink = value; } }
+    [SerializeField]
+    private float MeteoTime;
 
     private Vector3 ShrinkVector;
-    private WaitForSeconds ShrinkTimer = new WaitForSeconds(1f);
+    private WaitForSeconds MeteoTimer;
 
-    private void Start()
+    private void Awake()
     {
-        PlanetShrink = true;
+        MeteoTimer = new WaitForSeconds(MeteoTime);
         ShrinkVector = new Vector3(1, 1, 1) * ShrinkForce;
-        StartCoroutine(StartMeteoCoroutine());
     }
 
-    private void Update()
-    {
-        if (transform.localScale.x > MinShrink && planetShrink)
-            ShrinkingPlanet();
-    }
-
-    private void ShrinkingPlanet()
+    public void ShrinkingPlanet()
     {
         transform.localScale -= ShrinkVector;
     }
 
-    private IEnumerator StartMeteoCoroutine()
+    public IEnumerator StartMeteoCoroutine()
     {
         Vector3 pos;
         while (true)
         {
             pos = Random.onUnitSphere * MeteoRadius;
             Instantiate(DefaultMeteo, pos, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            yield return MeteoTimer;
         }
+
+        yield return null;
     }
 }
