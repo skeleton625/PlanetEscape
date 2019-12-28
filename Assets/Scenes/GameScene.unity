@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f2f6ad011da8ee940aa898e2f8e7d480, type: 3}
+  m_Texture: {fileID: 2800000, guid: 27f6cad1a053d724c85762e83c1c5fcd, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1045,7 +1045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1388764636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b5ac21c195391745b52da38e8e73432, type: 2}
+  - {fileID: 2100000, guid: b9473d61aeefed74e891b985c2806736, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
