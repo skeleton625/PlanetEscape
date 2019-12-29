@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private float RotateSpeed;
     [SerializeField]
     private GameObject ExplosionEffect;
+    [SerializeField]
+    private bool IsGameStart;
 
     private float rotation;
     private Rigidbody rb;
@@ -20,19 +22,22 @@ public class PlayerController : MonoBehaviour
     public bool PlayerDead
         { get { return playerDead; } }
 
-    void Start()
+    private void Awake()
     {
         playerDead = false;
         Planet = GameObject.Find("Planet");
-        PlayerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        PlayerCamera.transform.parent = transform;
         rb = GetComponent<Rigidbody>();
         PlayerAnim = GetComponent<Animator>();
+
+        if (IsGameStart)
+        {
+            PlayerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            PlayerCamera.transform.parent = transform;
+        }
     }
 
     private void Update()
     {
-
         InputMove();
     }
 
