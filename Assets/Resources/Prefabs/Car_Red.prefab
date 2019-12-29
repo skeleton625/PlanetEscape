@@ -65,6 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -142,6 +143,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -219,6 +221,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -296,6 +299,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -373,6 +377,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -397,10 +402,10 @@ GameObject:
   - component: {fileID: 919399075109819743}
   - component: {fileID: 919399075109819740}
   - component: {fileID: 919399075109819682}
-  - component: {fileID: 919399075109819737}
   - component: {fileID: 919399075109819742}
+  - component: {fileID: 919399075109819737}
   m_Layer: 0
-  m_Name: Car_Red 1
+  m_Name: Car_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,6 +478,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &919399075109819742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325162285192239262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e59cbb20644cf94bbe45b3f85fd62a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlaceOnSurface: 1
 --- !u!114 &919399075109819737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,17 +505,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 7
   RotateSpeed: 200
-  ExplosionEffect: {fileID: 0}
---- !u!114 &919399075109819742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325162285192239262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e59cbb20644cf94bbe45b3f85fd62a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlaceOnSurface: 1
+  ExplosionEffect: {fileID: 8739811068054660443, guid: e1115e4086c81b146b3851eb23b1ffb0,
+    type: 3}
+  IsGameStart: 0

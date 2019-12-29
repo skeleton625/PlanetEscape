@@ -48,6 +48,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1958050874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495219066909666016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e59cbb20644cf94bbe45b3f85fd62a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlaceOnSurface: 1
 --- !u!114 &1958050875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,19 +77,7 @@ MonoBehaviour:
   RotateSpeed: 200
   ExplosionEffect: {fileID: 8739811068054660443, guid: e1115e4086c81b146b3851eb23b1ffb0,
     type: 3}
---- !u!114 &1958050874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495219066909666016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e59cbb20644cf94bbe45b3f85fd62a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlaceOnSurface: 1
+  IsGameStart: 0
 --- !u!1001 &1497130678695186876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,9 +85,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1079374514263872, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_Name
+      value: Back_Right_Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308004260180378, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_Name
+      value: Back_Left_Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323162085873844, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_Name
+      value: Front_Left_Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695501576693806, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_Name
+      value: Bus_Body
+      objectReference: {fileID: 0}
     - target: {fileID: 1959030373088092, guid: fc4245223e4122142bb14239d44230ef, type: 3}
       propertyPath: m_Name
       value: Bus_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984030507710860, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_Name
+      value: Front_Right_Wheel
       objectReference: {fileID: 0}
     - target: {fileID: 4353972167979376, guid: fc4245223e4122142bb14239d44230ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,25 +153,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1308004260180378, guid: fc4245223e4122142bb14239d44230ef, type: 3}
-      propertyPath: m_Name
-      value: Back_Left_Wheel
+    - target: {fileID: 4353972167979376, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 1695501576693806, guid: fc4245223e4122142bb14239d44230ef, type: 3}
-      propertyPath: m_Name
-      value: Bus_Body
+    - target: {fileID: 4353972167979376, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 1323162085873844, guid: fc4245223e4122142bb14239d44230ef, type: 3}
-      propertyPath: m_Name
-      value: Front_Left_Wheel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1079374514263872, guid: fc4245223e4122142bb14239d44230ef, type: 3}
-      propertyPath: m_Name
-      value: Back_Right_Wheel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1984030507710860, guid: fc4245223e4122142bb14239d44230ef, type: 3}
-      propertyPath: m_Name
-      value: Front_Right_Wheel
+    - target: {fileID: 4353972167979376, guid: fc4245223e4122142bb14239d44230ef, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc4245223e4122142bb14239d44230ef, type: 3}
