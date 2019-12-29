@@ -16,12 +16,15 @@ public class PlanetController : MonoBehaviour
     private float MeteoTime;
 
     private Vector3 ShrinkVector;
+    private IEnumerator MeteoCoroutine;
     private WaitForSeconds MeteoTimer;
 
     private void Awake()
     {
         MeteoTimer = new WaitForSeconds(MeteoTime);
         ShrinkVector = new Vector3(1, 1, 1) * ShrinkForce;
+        MeteoCoroutine = StartMeteoCoroutine();
+        StartCoroutine(MeteoCoroutine);
     }
 
     public void ShrinkingPlanet()
@@ -29,7 +32,7 @@ public class PlanetController : MonoBehaviour
         transform.localScale -= ShrinkVector;
     }
 
-    public IEnumerator StartMeteoCoroutine()
+    private IEnumerator StartMeteoCoroutine()
     {
         Vector3 pos;
         while (true)
@@ -38,7 +41,10 @@ public class PlanetController : MonoBehaviour
             Instantiate(DefaultMeteo, pos, Quaternion.identity);
             yield return MeteoTimer;
         }
+    }
 
-        yield return null;
+    public void StopMeteoCoroutine()
+    {
+        StopCoroutine(MeteoCoroutine);
     }
 }

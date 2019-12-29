@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     private InGameUI GameUI;
     private GameObject Planet;
     private GameObject PlayerCar;
-    private IEnumerator MeteoCoroutine;
     private PlayerController PlayerInstance;
     private PlanetController PlanetInstance;
 
@@ -19,8 +18,6 @@ public class GameManager : MonoBehaviour
         PlayerCar = GameObject.Find("PlayerCar");
         PlanetInstance = Planet.GetComponent<PlanetController>();
         PlayerInstance = PlayerCar.GetComponent<PlayerController>();
-        MeteoCoroutine = PlanetInstance.StartMeteoCoroutine();
-        StartCoroutine(MeteoCoroutine);
     }
 
     // Update is called once per frame
@@ -34,7 +31,7 @@ public class GameManager : MonoBehaviour
         else
         {
             GameUI.ActivateGameOverUI();
-            StopCoroutine(MeteoCoroutine);
+            PlanetInstance.StopMeteoCoroutine();
         }   
     }
 }
