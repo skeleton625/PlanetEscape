@@ -37,8 +37,9 @@ public class PlanetController : MonoBehaviour
         Vector3 pos;
         while (true)
         {
-            pos = Random.onUnitSphere * MeteoRadius;
-            Instantiate(DefaultMeteo, pos, Quaternion.identity);
+            pos = Random.onUnitSphere * MeteoRadius;    
+            GameObject _clone = Instantiate(DefaultMeteo, pos, Quaternion.identity);
+            _clone.transform.parent = transform;
             yield return MeteoTimer;
         }
     }
