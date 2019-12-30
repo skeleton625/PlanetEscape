@@ -1,38 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    private GameObjectArray ObjectInstance;
-    private static int CarNum = 0;
-    private void Start()
+    [SerializeField]
+    private bool IsMenu;
+    private ObjectManager ObjectInstance;
+    private MenuGameUI UIInstance;
+    private void Awake()
     {
-        ObjectInstance = GameObject.Find("GameObjectArray").GetComponent<GameObjectArray>();
+        if(IsMenu)
+        {
+            GameObject _manager = GameObject.Find("ObjectManager");
+            UIInstance = _manager.GetComponent<MenuGameUI>();
+            ObjectInstance = _manager.GetComponent<ObjectManager>();
+        }
     }
 
     public void OnArrowButtonClick()
     {
-        // 현재 선택된 차 오브젝트 비활성화
-        ObjectInstance.GetCarObject(CarNum).SetActive(false);
         if (gameObject.name == "Right")
-        {
-            --CarNum;
-            if (CarNum < 0)
-                CarNum = ObjectInstance.GetCarArrayLength() - 1;
-        }
+            ObjectInstance.ActivateCarObject(true);
         else if(gameObject.name == "Left")
-        {
-            ++CarNum;
-            if (CarNum >= ObjectInstance.GetCarArrayLength())
-                CarNum = 0;
-        }
-        // 다음 선택된 차 오브젝트 활성화
-        ObjectInstance.GetCarObject(CarNum).SetActive(true);
+            ObjectInstance.ActivateCarObject(false);
     }
 
     public void OnGameStartButtonClick()
     {
-        ObjectInstance.ActivateGameStartObjects(true);
+        UIInstance.ActivateGameStartObjects(true);
+    }
+
+    public void InGameStartButtonClick()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void InMenuStartButtonClick()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
