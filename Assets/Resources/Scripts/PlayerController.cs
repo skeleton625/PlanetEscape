@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Animator PlayerAnim;
     private Camera PlayerCamera;
-    private GameObject Planet;
     private bool playerDead;
     public bool PlayerDead
         { get { return playerDead; } }
@@ -25,11 +24,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerDead = false;
-        Planet = GameObject.Find("Planet");
         rb = GetComponent<Rigidbody>();
         PlayerAnim = GetComponent<Animator>();
-
-        if (IsGameStart)
+        if(IsGameStart)
         {
             PlayerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
             PlayerCamera.transform.parent = transform;
