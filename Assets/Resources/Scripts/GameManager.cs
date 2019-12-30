@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] Cars;
+
     private InGameUI GameUI;
     private GameObject Planet;
     private GameObject PlayerCar;
     private PlayerController PlayerInstance;
     private PlanetController PlanetInstance;
 
+    private void Awake()
+    {
+        Cars[ObjectManager.PreCarNumber].SetActive(true);
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GameUI = GetComponent<InGameUI>();
         Planet = GameObject.Find("Planet");
