@@ -6,14 +6,32 @@ public class ObjectManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] CarObjects;
-    public static int PreCarNumber;
+    [SerializeField]
+    private GameObject DefaultMeteo;
+    [SerializeField]
+    private int AllMeteoCount;
+    [SerializeField]
+    private Vector3 MeteoPos;
+
+    private static int PreCarNumber;
+    public static ObjectManager instance;
+    private Queue<GameObject> MeteoQueue;
 
     private void Awake()
     {
-        ObjectManager.PreCarNumber = 0;
+        instance = this;
+        MeteoQueue = new Queue<GameObject>();
+        for(int i = 0; i < AllMeteoCount; i++)
+        {
+            GameObject _meteo = Instantiate(DefaultMeteo, MeteoPos, Quaternion.identity);
+            _meteo.transform.parent = transform;
+            MeteoQueue.Enqueue(_meteo);
+            _meteo.SetActive(false);
+        }
+            
     }
 
-    public void ActivateCarObject(bool _isRight)
+    public void SelectCarObject(bool _isRight)
     {
         CarObjects[PreCarNumber].SetActive(false);
         CarObjects[PreCarNumber].transform.rotation = Quaternion.identity;
@@ -32,5 +50,25 @@ public class ObjectManager : MonoBehaviour
         }
 
         CarObjects[PreCarNumber].SetActive(true);
+        Debug.Log(PreCarNumber);
+    }
+
+    public void GetActivateCarObject()
+    {
+        CarObjects[PreCarNumber].SetActive(true);
+    }
+
+    public void PushMeteo(GameObject _meteo)
+    {
+        MeteoQueue.Enqueue(_meteo);
+        _meteo.SetActive(false);
+    }
+
+    public GameObject PopMeteo()
+    {
+        if (MeteoQueue.Count > 0)
+            return MeteoQueue.Dequeue();
+        else
+            return null;
     }
 }
