@@ -1335,6 +1335,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMenu: 1
+--- !u!1 &1163730304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2414912965284937451, guid: 7c811786540481c4695d651788fe55e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230745261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1183494244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47e975f563545f4fa2ba8b5149b30d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Planet: {fileID: 1163730304}
   CarObjects:
   - {fileID: 478608891}
   - {fileID: 615838343}
@@ -1372,6 +1379,10 @@ MonoBehaviour:
   - {fileID: 1596919860}
   - {fileID: 1770233491}
   - {fileID: 61371170}
+  DefaultMeteo: {fileID: 4247180769253484359, guid: 5df3c2f18bb66bb4c87f0b254fb5b1a9,
+    type: 3}
+  AllMeteoCount: 20
+  MeteoPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1183494246
 Transform:
   m_ObjectHideFlags: 0
