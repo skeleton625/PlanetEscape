@@ -7,22 +7,23 @@ public class ButtonManager : MonoBehaviour
     private bool IsMenu;
     private ObjectManager ObjectInstance;
     private MenuGameUI UIInstance;
+    private GameObject Objects;
     private void Awake()
     {
         if(IsMenu)
         {
-            GameObject _manager = GameObject.Find("ObjectManager");
-            UIInstance = _manager.GetComponent<MenuGameUI>();
-            ObjectInstance = _manager.GetComponent<ObjectManager>();
+            Objects = GameObject.Find("ObjectManager");
+            UIInstance = Objects.GetComponent<MenuGameUI>();
+            ObjectInstance = Objects.GetComponent<ObjectManager>();
         }
     }
 
     public void OnArrowButtonClick()
     {
         if (gameObject.name == "Right")
-            ObjectInstance.ActivateCarObject(true);
+            ObjectInstance.SelectCarObject(true);
         else if(gameObject.name == "Left")
-            ObjectInstance.ActivateCarObject(false);
+            ObjectInstance.SelectCarObject(false);
     }
 
     public void OnGameStartButtonClick()
