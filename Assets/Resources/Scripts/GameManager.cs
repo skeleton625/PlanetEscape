@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] Cars;
-
     private InGameUI GameUI;
-    private GameObject Planet;
-    private GameObject PlayerCar;
     private PlayerController PlayerInstance;
     private PlanetController PlanetInstance;
 
-    private void Awake()
-    {
-        Cars[ObjectManager.PreCarNumber].SetActive(true);
-    }
+
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         GameUI = GetComponent<InGameUI>();
-        Planet = GameObject.Find("Planet");
-        PlayerCar = GameObject.Find("PlayerCar");
-        PlanetInstance = Planet.GetComponent<PlanetController>();
-        PlayerInstance = PlayerCar.GetComponent<PlayerController>();
+    }
+
+    private void Start()
+    {
+        ObjectManager.instance.GetActivateCarObject();
+        PlanetInstance = GameObject.Find("Planet").GetComponent<PlanetController>();
+        PlayerInstance = GameObject.Find("PlayerCar").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
