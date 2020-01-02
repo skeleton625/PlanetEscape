@@ -11,6 +11,6 @@ public class MeteoController : MonoBehaviour
     {
         GameObject _effect = Instantiate(MeteoEffect, collision.contacts[0].point, Quaternion.identity);
         Destroy(_effect, 2f);
-        Destroy(gameObject);
+        ObjectManager.instance.PushMeteo(gameObject);
     }
 }
