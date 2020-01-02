@@ -7,22 +7,24 @@ public class PlanetController : MonoBehaviour
     [SerializeField]
     private float ShrinkForce;
     [SerializeField]
-    private float MinShrink;
-    [SerializeField]
-    private GameObject DefaultMeteo;
-    [SerializeField]
     private float MeteoRadius;
     [SerializeField]
     private float MeteoTime;
 
+    private ObjectManager MeteoInstance;
     private Vector3 ShrinkVector;
     private IEnumerator MeteoCoroutine;
     private WaitForSeconds MeteoTimer;
 
     private void Awake()
     {
-        MeteoTimer = new WaitForSeconds(MeteoTime);
         ShrinkVector = new Vector3(1, 1, 1) * ShrinkForce;
+        MeteoTimer = new WaitForSeconds(MeteoTime);
+    }
+
+    private void Start()
+    {
+        MeteoInstance = ObjectManager.instance;
         MeteoCoroutine = StartMeteoCoroutine();
         StartCoroutine(MeteoCoroutine);
     }
@@ -37,9 +39,14 @@ public class PlanetController : MonoBehaviour
         Vector3 pos;
         while (true)
         {
-            pos = Random.onUnitSphere * MeteoRadius;    
-            GameObject _clone = Instantiate(DefaultMeteo, pos, Quaternion.identity);
-            _clone.transform.parent = transform;
+            GameObject _meteo = MeteoInstance.PopMeteo();
+            if(_meteo != null)
+            {
+                pos = Random.onUnitSphere * MeteoRadius;
+                _meteo.transform.position = pos;
+                _meteo.transform.LookAt(Vector3.zero);
+                _meteo.SetActive(true);
+            }
             yield return MeteoTimer;
         }
     }
