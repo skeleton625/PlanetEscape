@@ -10,6 +10,7 @@ public class MeteoController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject _effect = Instantiate(MeteoEffect, collision.contacts[0].point, Quaternion.identity);
+        _effect.transform.parent = transform.parent;
         Destroy(_effect, 2f);
         ObjectManager.instance.PushMeteo(gameObject);
     }

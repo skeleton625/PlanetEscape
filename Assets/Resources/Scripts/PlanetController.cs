@@ -43,6 +43,7 @@ public class PlanetController : MonoBehaviour
             if(_meteo != null)
             {
                 pos = Random.onUnitSphere * MeteoRadius;
+                _meteo.transform.parent = transform;
                 _meteo.transform.position = pos;
                 _meteo.transform.LookAt(Vector3.zero);
                 _meteo.SetActive(true);
